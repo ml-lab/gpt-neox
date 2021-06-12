@@ -114,7 +114,7 @@ class GPT2ModelPipe(PipelineModule, torch.nn.Module):
         # 
         self.specs = []
         self.init_specs()
-        loss_fn = partial(cross_entropy, _fp16=self.fp16_lm_cross_entropy)
+        loss_fn = partial(cross_entropy, _fp16=self.fp16_lm_cross_entropy) # This needs to be settable by the code to do distilling
         if self.neox_args.checkpoint_activations:
             interval = self.neox_args.checkpoint_num_layers
         else:
